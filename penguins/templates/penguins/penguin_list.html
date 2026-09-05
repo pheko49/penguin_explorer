@@ -10,7 +10,13 @@
         <h1>Penguins</h1>
 
         {% for penguin in penguins %}
-            <p>{{ penguin.species }}</p>
+            <p>
+                Species: {{ penguin.species }} |
+                Island: {{ penguin.island }} |
+                Bill length: {{ penguin.bill_length_mm }} mm |
+                Body mass: {{ penguin.body_mass_g }} g |
+                Sex: {{ penguin.sex }}
+            </p>
         {% endfor %}
     </body>
 </html>
