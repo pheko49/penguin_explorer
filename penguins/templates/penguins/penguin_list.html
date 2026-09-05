@@ -9,14 +9,35 @@
 
         <h1>Penguins</h1>
 
-        {% for penguin in penguins %}
-            <p>
-                Species: {{ penguin.species }} |
-                Island: {{ penguin.island }} |
-                Bill length: {{ penguin.bill_length_mm }} mm |
-                Body mass: {{ penguin.body_mass_g }} g |
-                Sex: {{ penguin.sex }}
-            </p>
-        {% endfor %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Species</th>
+                    <th>Island</th>
+                    <th>Bill Length (mm)</th>
+                    <th>Bill Depth (mm)</th>
+                    <th>Flipper Length (mm)</th>
+                    <th>Body Mass (g)</th>
+                    <th>Sex</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for penguin in penguins %}
+
+                    <tr>
+                        <td>{{ penguin.species }}</td>
+                        <td>{{ penguin.island }}</td>
+                        <td>{{ penguin.bill_length_mm }}</td>
+                        <td>{{ penguin.bill_depth }}</td>
+                        <td>{{ penguin.flipper_length_mm }}</td>
+                        <td>{{ penguin.body_mass_g }}</td>
+                        <td>{{ penguin.sex }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </body>
 </html>

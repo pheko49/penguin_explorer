@@ -1,2 +1,4 @@
 ['species', 'island', 'bill_length_mm', 'bill_depth_mm',
-       'flipper_length_mm', 'body_mass_g', 'sex']
+       'flipper_length_mm', 'z', 'sex']
+
+       penguins = Penguin.objects.filter(species='Gentoo')
