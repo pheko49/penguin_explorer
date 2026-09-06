@@ -74,6 +74,18 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div>
+            {% if penguins.has_previous %}
+                <a href="?species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}">Previous</a>
+            {% endif %}
+
+            <span>
+                Page {{ penguins.number }} of {{ penguins.paginator.num_pages }}
+            </span>
+            {% if penguins.has_next %}
+                <a href="?species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
     {% else %}
         <p>No penguins found matching your filters.</p>
     {% endif %}
