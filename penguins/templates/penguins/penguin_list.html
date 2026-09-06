@@ -9,6 +9,23 @@
 
         <h1>Penguins</h1>
 
+        <form method="get">
+            <label for="species">Species</label>
+
+            <select name="species" id="species">
+                <option value="">All</option>
+                
+                {% for species in species_options %}
+                    <option value="{{ species }}"
+                    {% if species == selected_species %}selected{% endif %}>
+                    {{ species }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Filter</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
