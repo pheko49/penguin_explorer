@@ -6,9 +6,9 @@
                        ↓
              Penguin detail page ✅
                        ↓
-              Search / pagination
+              Search / pagination ✅
                        ↓
-             Data summary/dashboard
+             Data summary/dashboard **(IN PROGRESS)
                        ↓
                 Visualizations
                        ↓
