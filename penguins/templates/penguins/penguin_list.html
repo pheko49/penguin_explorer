@@ -47,6 +47,7 @@
                     <th>Flipper Length (mm)</th>
                     <th>Body Mass (g)</th>
                     <th>Sex</th>
+                    <th>Details</th>
 
                 </tr>
             </thead>
@@ -63,6 +64,12 @@
                         <td>{{ penguin.flipper_length_mm }}</td>
                         <td>{{ penguin.body_mass_g }}</td>
                         <td>{{ penguin.sex }}</td>
+
+                        <td>
+                            <a href="{% url 'penguin_detail' penguin.pk %}">
+                                View
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
