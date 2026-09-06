@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Penguin
+from django.db.models import Q
 
 # Create your views here.
 
@@ -18,17 +19,35 @@ def penguin_list(request):
 
     page_number = request.GET.get('page')
 
-    if species and island:
-        penguins = Penguin.objects.filter(
-            species=species,
-            island=island
-            )
-    elif species:
-        penguins = Penguin.objects.filter(species=species)
-    elif island:
-        penguins = Penguin.objects.filter(island=island)
-    else:
-        penguins = Penguin.objects.all()
+    search = request.GET.get('search')
+
+# OLD BLOCK BELOW -- commented out
+    # if species and island:
+    #     penguins = Penguin.objects.filter(
+    #         species=species,
+    #         island=island
+    #         )
+    # elif species:
+    #     penguins = Penguin.objects.filter(species=species)
+    # elif island:
+    #     penguins = Penguin.objects.filter(island=island)
+    # else:
+    #     penguins = Penguin.objects.all()
+
+    # NEW BLOCK BELOW
+    penguins = Penguin.objects.all()
+
+    if species:
+        penguins = penguins.filter(species=species)
+
+    if island:
+        penguins = penguins.filter(island=island)
+
+    if search:
+        penguins = penguins.filter(
+            Q(species__icontains=search) |
+            Q(island__icontains=search)
+        )
 
     paginator = Paginator(penguins, 20)
 
@@ -51,7 +70,8 @@ def penguin_list(request):
                       'species_options': species_options,
                       'selected_species': species,
                       'island_options': island_options,
-                      'selected_island': island
+                      'selected_island': island,
+                      'search': search
                   })
 
 def penguin_detail(request, pk):

@@ -10,6 +10,17 @@
         <h1>Penguins</h1>
 
         <form method="get">
+
+            <label for="search">Search:</label>
+
+            <input
+                type="text"
+                name="search"
+                id="search"
+                value="{{ search|default:'' }}"
+                placeholder="Search species or island"
+            >
+
             <label for="species">Species</label>
 
             <select name="species" id="species">
@@ -23,7 +34,7 @@
                 {% endfor %}
             </select>
 
-            <select name="island" id="species">
+            <select name="island" id="island">
                 <option value="">All</option>
 
                 {% for island in island_options %}
@@ -76,14 +87,14 @@
         </table>
         <div>
             {% if penguins.has_previous %}
-                <a href="?species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}">Previous</a>
+                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}">Previous</a>
             {% endif %}
 
             <span>
                 Page {{ penguins.number }} of {{ penguins.paginator.num_pages }}
             </span>
             {% if penguins.has_next %}
-                <a href="?species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}">Next</a>
+                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}">Next</a>
             {% endif %}
         </div>
     {% else %}
