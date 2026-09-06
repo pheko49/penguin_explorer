@@ -4,7 +4,7 @@
                        ↓
              Island multi-filter ✅
                        ↓
-             Penguin detail page
+             Penguin detail page ✅
                        ↓
               Search / pagination
                        ↓

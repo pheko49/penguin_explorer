@@ -45,3 +45,11 @@ def penguin_list(request):
                       'island_options': island_options,
                       'selected_island': island
                   })
+
+def penguin_detail(request, pk):
+
+    penguin = Penguin.objects.get(id=pk)
+
+    return render(request, 'penguins/penguin_detail.html', {
+        'penguin': penguin
+    })
