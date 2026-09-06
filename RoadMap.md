@@ -2,7 +2,7 @@
                        ↓
               Dynamic filtering ✅
                        ↓
-             Island multi-filter
+             Island multi-filter ✅
                        ↓
              Penguin detail page
                        ↓
