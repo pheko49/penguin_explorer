@@ -23,9 +23,20 @@
                 {% endfor %}
             </select>
 
+            <select name="island" id="species">
+                <option value="">All</option>
+
+                {% for island in island_options %}
+                    <option value="{{ island }}"
+                    {% if island == selected_island %}selected{% endif %}>
+                    {{ island }}
+                    </option>
+                {% endfor %}
+            </select>
+
             <button type="submit">Filter</button>
         </form>
-
+    {% if penguins %}
         <table>
             <thead>
                 <tr>
@@ -56,5 +67,8 @@
                 {% endfor %}
             </tbody>
         </table>
+    {% else %}
+        <p>No penguins found matching your filters.</p>
+    {% endif %}
     </body>
 </html>

@@ -13,8 +13,17 @@ def penguin_list(request):
 
     species = request.GET.get('species')
 
-    if species:
+    island = request.GET.get('island')
+
+    if species and island:
+        penguins = Penguin.objects.filter(
+            species=species,
+            island=island
+            )
+    elif species:
         penguins = Penguin.objects.filter(species=species)
+    elif island:
+        penguins = Penguin.objects.filter(island=island)
     else:
         penguins = Penguin.objects.all()
 
@@ -23,9 +32,16 @@ def penguin_list(request):
         flat=True
     ).distinct()
 
+    island_options = Penguin.objects.values_list(
+        'island',
+        flat=True
+    ).distinct()
+
     return render(request,'penguins/penguin_list.html',
                   {
                       'penguins': penguins,
                       'species_options': species_options,
-                      'selected_species': species
+                      'selected_species': species,
+                      'island_options': island_options,
+                      'selected_island': island
                   })
