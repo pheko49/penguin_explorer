@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Penguin
-from django.db.models import Q, Avg, Count
+from django.db.models import Q, Avg, Count, Min, Max
 
 # Create your views here.
 
@@ -63,8 +63,17 @@ def penguin_list(request):
         Avg('bill_length_mm')
     )['bill_length_mm__avg']
 
+    minimum_body_mass = penguins.aggregate(
+        Min('body_mass_g')
+    )['body_mass_g__min']
+
+    maximum_body_mass = penguins.aggregate(
+        Max('body_mass_g')
+    )['body_mass_g__max']
+
     species_counts = penguins.values('species').annotate(
-        count=Count('id')
+        count=Count('id'),
+        average_body_mass=Avg('body_mass_g')
     )
 
     paginator = Paginator(penguins, 20)
@@ -94,7 +103,9 @@ def penguin_list(request):
                       'average_body_mass': average_body_mass,
                       'average_flipper_length': average_flipper_length,
                       'average_bill_length': average_bill_length,
-                      'species_counts': species_counts
+                      'species_counts': species_counts,
+                      'minimum_body_mass': minimum_body_mass,
+                      'maximum_body_mass': maximum_body_mass
                   })
 
 def penguin_detail(request, pk):

@@ -29,7 +29,17 @@
 
             <p>
                 <strong>Average Bill Length:</strong>
-                {{ average_bill_length|floatformat:2 }}
+                {{ average_bill_length|floatformat:2 }} mm
+            </p>
+
+            <p>
+                <strong>Minimum Body Mass:</strong>
+                {{ minimum_body_mass }} g
+            </p>
+
+            <p>
+                <strong>Maximum Body Mass:</strong>
+                {{ maximum_body_mass }} g
             </p>
         </div>
 
@@ -38,7 +48,10 @@
         <ul>
             {% for species in species_counts %}
                 <li>
-                    {{ species.species }}: {{ species.count }}
+                    {{ species.species }}: 
+                    {{ species.count }} penguins -
+                    Average Body Mass:
+                    {{ species.average_body_mass|floatformat:2 }} g
                 </li>
             {% endfor %}
         </ul>
