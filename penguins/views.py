@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Penguin
-from django.db.models import Q
+from django.db.models import Q, Avg, Count
 
 # Create your views here.
 
@@ -49,6 +49,24 @@ def penguin_list(request):
             Q(island__icontains=search)
         )
 
+    total_penguins = penguins.count()
+
+    average_body_mass = penguins.aggregate(
+        Avg('body_mass_g')
+    )['body_mass_g__avg']
+
+    average_flipper_length = penguins.aggregate(
+        Avg('flipper_length_mm')
+    )['flipper_length_mm__avg']
+
+    average_bill_length = penguins.aggregate(
+        Avg('bill_length_mm')
+    )['bill_length_mm__avg']
+
+    species_counts = penguins.values('species').annotate(
+        count=Count('id')
+    )
+
     paginator = Paginator(penguins, 20)
 
     page_obj = paginator.get_page(page_number)
@@ -71,7 +89,12 @@ def penguin_list(request):
                       'selected_species': species,
                       'island_options': island_options,
                       'selected_island': island,
-                      'search': search
+                      'search': search,
+                      'total_penguins': total_penguins,
+                      'average_body_mass': average_body_mass,
+                      'average_flipper_length': average_flipper_length,
+                      'average_bill_length': average_bill_length,
+                      'species_counts': species_counts
                   })
 
 def penguin_detail(request, pk):

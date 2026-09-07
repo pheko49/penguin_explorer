@@ -9,6 +9,40 @@
 
         <h1>Penguins</h1>
 
+        <div>
+            <h2>Penguin Summary</h2>
+
+            <p>
+                <strong>Total Penguins:</strong>
+                {{ total_penguins }}
+            </p>
+
+            <p>
+                <strong>Average Body Mass:</strong>
+                {{ average_body_mass|floatformat:2 }} g
+            </p>
+
+            <p>
+                <strong>Average Flipper Length:</strong>
+                {{ average_flipper_length|floatformat:2 }} mm
+            </p>
+
+            <p>
+                <strong>Average Bill Length:</strong>
+                {{ average_bill_length|floatformat:2 }}
+            </p>
+        </div>
+
+        <h2>Species Breakdown</h2>
+
+        <ul>
+            {% for species in species_counts %}
+                <li>
+                    {{ species.species }}: {{ species.count }}
+                </li>
+            {% endfor %}
+        </ul>
+
         <form method="get">
 
             <label for="search">Search:</label>
