@@ -8,9 +8,9 @@
                        ↓
               Search / pagination ✅
                        ↓
-             Data summary/dashboard **(IN PROGRESS)
+             Data summary/dashboard ✅
                        ↓
-                Visualizations
+                Visualizations ***(NOT YET STARTED)
                        ↓
             Penguins gallery/facts - (optional)
                        ↓
