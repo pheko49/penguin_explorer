@@ -77,6 +77,16 @@ def penguin_list(request):
         average_body_mass=Avg('body_mass_g')
     )
     )
+
+    scatter_data = list(
+        penguins.values(
+            'species',
+            'bill_length_mm',
+            'body_mass_g'
+        )
+    )
+
+
     paginator = Paginator(penguins, 20)
 
     page_obj = paginator.get_page(page_number)
@@ -106,7 +116,8 @@ def penguin_list(request):
                       'average_bill_length': average_bill_length,
                       'species_counts': species_counts,
                       'minimum_body_mass': minimum_body_mass,
-                      'maximum_body_mass': maximum_body_mass
+                      'maximum_body_mass': maximum_body_mass,
+                      'scatter_data': scatter_data
                   })
 
 def penguin_detail(request, pk):

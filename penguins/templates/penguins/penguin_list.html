@@ -58,8 +58,13 @@
         </ul>
 
         {{ species_counts|json_script:"species-data" }}
+        {{ scatter_data|json_script:"scatter-data" }}
 
         <canvas id="speciesChart"></canvas>
+
+        <h2>Bill Length vs Body Mass</h2>
+
+        <canvas id="scatterChart"></canvas>
 
         <form method="get">
 

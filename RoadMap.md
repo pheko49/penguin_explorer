@@ -10,7 +10,7 @@
                        ↓
              Data summary/dashboard ✅
                        ↓
-            Visualizations ***(NOT YET STARTED) 🔵
+            Visualizations ***(IN PROGRESS) 🔵
                        ↓
             Penguins gallery/facts - (optional)
                        ↓
