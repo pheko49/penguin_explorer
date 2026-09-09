@@ -20,9 +20,44 @@ new Chart(canvas,{
         labels: labels,
         datasets: [
             {
-                label: "Number of Penguins",
+                label: "Penguin Count",
                 data: counts
             }
         ]
+    },
+
+    plugins: [ChartDataLabels],
+
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Penguin Population by Species"
+            },
+
+            datalabels: {
+                anchor: "end",
+                align: "top",
+                
+                font: {
+                    weight: "bold"
+                }
+            }
+        },
+
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Penguin Species"
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Number of Penguins"
+                }
+            }
+        }
     }
 });
