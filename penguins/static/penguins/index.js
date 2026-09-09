@@ -16,6 +16,41 @@ const scatterPoints = scatterData.map(penguin => ({
     y: penguin.body_mass_g
 }));
 
+const bodyMasses = scatterData.map(
+    penguin => penguin.body_mass_g
+);
+
+console.log(bodyMasses)
+
+const binSize = 500;
+
+const bins = bodyMasses.map(
+    bodyMass => Math.floor(bodyMass / binSize) * binSize
+);
+
+console.log(bins)
+
+const binCounts ={};
+
+for (const bin of bins) {
+    binCounts[bin] = (binCounts[bin] || 0) + 1;
+}
+
+console.log(binCounts);
+
+const entries = Object.entries(binCounts);
+
+console.log(entries);
+
+const distributionData = entries.map(entry => ({
+    range: `${entry[0]}-${Number(entry[0]) + binSize -1}`,
+    count: entry[1]
+}));
+
+console.log(distributionData)
+
+const bodyMassCanvas = document.getElementById("bodyMassChart")
+
 const adeliePoints = scatterPoints.filter(
     penguin => penguin.species === "Adelie"
 );
@@ -145,3 +180,43 @@ new Chart(scatterCanvas, {
         }
     }
 });
+
+new Chart(bodyMassCanvas,{
+    type: "bar",
+
+    data: {
+        labels: distributionData.map(item => item.range),
+
+        datasets: [
+            {
+                label: "Penguin Count",
+                data: distributionData.map(item => item.count)
+            }
+        ]
+    },
+
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Body Mass Distribution"
+            }
+        },
+        
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Body Mass (g)"
+                }
+            },
+
+            y: {
+                title: {
+                    display: true,
+                    text: "Number of Penguins"
+                }
+            }
+        }
+    }
+})
