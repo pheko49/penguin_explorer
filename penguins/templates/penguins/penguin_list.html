@@ -6,6 +6,7 @@
     </head>
 
     <body>
+        {% load static %}
 
         <h1>Penguins</h1>
 
@@ -55,6 +56,10 @@
                 </li>
             {% endfor %}
         </ul>
+
+        {{ species_counts|json_script:"species-data" }}
+
+        <canvas id="speciesChart"></canvas>
 
         <form method="get">
 
@@ -147,5 +152,8 @@
     {% else %}
         <p>No penguins found matching your filters.</p>
     {% endif %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+    <script src="{% static 'penguins/index.js' %}"></script>
     </body>
 </html>

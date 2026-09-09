@@ -71,11 +71,12 @@ def penguin_list(request):
         Max('body_mass_g')
     )['body_mass_g__max']
 
-    species_counts = penguins.values('species').annotate(
+    species_counts = list(
+        penguins.values('species').annotate(
         count=Count('id'),
         average_body_mass=Avg('body_mass_g')
     )
-
+    )
     paginator = Paginator(penguins, 20)
 
     page_obj = paginator.get_page(page_number)
