@@ -6,10 +6,6 @@ const scatterData = JSON.parse(
     document.getElementById("scatter-data").textContent
 )
 
-console.log(data)
-
-console.log(scatterData)
-
 const scatterPoints = scatterData.map(penguin => ({
     species: penguin.species,
     x: penguin.bill_length_mm,
@@ -20,15 +16,11 @@ const bodyMasses = scatterData.map(
     penguin => penguin.body_mass_g
 );
 
-console.log(bodyMasses)
-
 const binSize = 500;
 
 const bins = bodyMasses.map(
     bodyMass => Math.floor(bodyMass / binSize) * binSize
 );
-
-console.log(bins)
 
 const binCounts ={};
 
@@ -36,18 +28,12 @@ for (const bin of bins) {
     binCounts[bin] = (binCounts[bin] || 0) + 1;
 }
 
-console.log(binCounts);
-
 const entries = Object.entries(binCounts);
-
-console.log(entries);
 
 const distributionData = entries.map(entry => ({
     range: `${entry[0]}-${Number(entry[0]) + binSize -1}`,
     count: entry[1]
 }));
-
-console.log(distributionData)
 
 const bodyMassCanvas = document.getElementById("bodyMassChart")
 
@@ -63,19 +49,12 @@ const gentooPoints = scatterPoints.filter(
     penguin => penguin.species === "Gentoo"
 );
 
-console.log(scatterPoints);
-
-console.log(data.map(item => item.species));
-console.log(data.map(item => item.count));
-
 const labels = data.map(item => item.species);
 const counts = data.map(item => item.count);
 
 const canvas = document.getElementById("speciesChart");
 
 const scatterCanvas = document.getElementById("scatterChart");
-
-console.log(typeof Chart)
 
 new Chart(canvas,{
     type: "bar",

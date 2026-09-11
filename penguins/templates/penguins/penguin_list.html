@@ -164,7 +164,7 @@
                         <td>{{ penguin.sex }}</td>
 
                         <td>
-                            <a href="{% url 'penguin_detail' penguin.pk %}">
+                            <a href="{% url 'penguin_detail' penguin.pk %}?{{ request.GET.urlencode }}">
                                 View
                             </a>
                         </td>
@@ -174,14 +174,14 @@
         </table>
         <div class="pagination" id="pagination">
             {% if penguins.has_previous %}
-                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}#pagination">Previous</a>
+                <a href="?search={{ search|default:'' }}&species={{ selected_species|default:'' }}&island={{ selected_island|default:'' }}&page={{ penguins.previous_page_number}}#pagination">Previous</a>
             {% endif %}
 
             <span>
                 Page {{ penguins.number }} of {{ penguins.paginator.num_pages }}
             </span>
             {% if penguins.has_next %}
-                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}#pagination">Next</a>
+                <a href="?search={{ search|default:'' }}&species={{ selected_species|default:'' }}&island={{ selected_island|default:'' }}&page={{ penguins.next_page_number }}#pagination">Next</a>
             {% endif %}
         </div>
     {% else %}

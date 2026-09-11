@@ -48,7 +48,7 @@
                 <span>{{ penguin.sex }}</span>
                 </div>
 
-            <a class="back-link" href="{% url 'penguin_list' %}">← Back to Penguins</a>
+            <a class="back-link" href="{% url 'penguin_list' %}?{{ request.GET.urlencode }}#pagination">← Back to Penguins</a>
             </div>
         </div>
     </body>
