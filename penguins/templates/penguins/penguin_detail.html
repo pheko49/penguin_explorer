@@ -1,19 +1,55 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html>
     <head>
         <title>Penguin Detail</title>
+        <link rel="stylesheet" href="{% static 'penguins/style.css' %}?=v2">
     </head>
 
     <body>
-        <h1>Penguin Details</h1>
+        <div class="detail-container">
+            <h1>Penguin Details</h1>
+            <div class="detail-grid">
 
-        <p><strong>Species:</strong> {{ penguin.species }}</p>
-        <p><strong>Island:</strong> {{ penguin.island }}</p>
-        <p><strong>Bill Length:</strong> {{ penguin.bill_length_mm }} mm</p>
-        <p><strong>Bill Depth:</strong>{{ penguin.bill_depth_mm }} mm</p>
-        <p><strong>Flipper Length:</strong> {{ penguin.flipper_length_mm }} mm</p>
-        <p><strong>Body Mass:</strong> {{ penguin.body_mass_g }} g</p>
-        <p><strong>Sex:</strong> {{ penguin.sex }}</p>
+                <div class="detail-item">
+                <strong>Species:</strong> 
+                <span>{{ penguin.species }}</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Island:</strong> 
+                <span>{{ penguin.island }}</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Bill Length:</strong> 
+                <span>{{ penguin.bill_length_mm }} mm</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Bill Depth:</strong>
+                <span>{{ penguin.bill_depth_mm }} mm</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Flipper Length:</strong> 
+                <span>{{ penguin.flipper_length_mm }} mm</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Body Mass:</strong> 
+                <span>{{ penguin.body_mass_g }} g</span>
+                </div>
+
+                <div class="detail-item">
+                <strong>Sex:</strong> 
+                <span>{{ penguin.sex }}</span>
+                </div>
+
+            <a class="back-link" href="{% url 'penguin_list' %}">← Back to Penguins</a>
+            </div>
+        </div>
     </body>
 </html>

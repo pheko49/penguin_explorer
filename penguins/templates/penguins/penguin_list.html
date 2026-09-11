@@ -3,6 +3,11 @@
 <html>
     <head>
         <title>Penguins</title>
+
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'penguins/style.css' %}">
+
     </head>
 
     <body>
@@ -10,8 +15,10 @@
 
         <h1>Penguins</h1>
 
-        <div>
+        <div class="summary-container">
             <h2>Penguin Summary</h2>
+
+            <div class="summary-grid">
 
             <p>
                 <strong>Total Penguins:</strong>
@@ -42,33 +49,50 @@
                 <strong>Maximum Body Mass:</strong>
                 {{ maximum_body_mass }} g
             </p>
+            </div>
         </div>
 
+            <div class="species-container">
         <h2>Species Breakdown</h2>
 
         <ul>
             {% for species in species_counts %}
                 <li>
-                    {{ species.species }}: 
-                    {{ species.count }} penguins -
-                    Average Body Mass:
-                    {{ species.average_body_mass|floatformat:2 }} g
+                    <strong>{{ species.species }}</strong>
+
+                    <span>{{ species.count }} penguins</span>
+                    
+                    <span>
+                    
+                    Average Body Mass: {{ species.average_body_mass|floatformat:2 }} g
+                    </span>
                 </li>
             {% endfor %}
         </ul>
-
+            </div>
         {{ species_counts|json_script:"species-data" }}
         {{ scatter_data|json_script:"scatter-data" }}
 
-        <canvas id="speciesChart"></canvas>
+        <div class="chart-container">
+        <h2>Penguin Population by Species</h2>
 
+        <canvas id="speciesChart"></canvas>
+        </div>
+
+        <div class="chart-container">
         <h2>Bill Length vs Body Mass</h2>
 
         <canvas id="scatterChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+        <h2>Body Mass Distribution</h2>
 
         <canvas id="bodyMassChart"></canvas>
+        </div>
 
-        <form method="get">
+        <div class="filter-container">
+        <form method="get" action="{% url 'penguin_list' %}">
 
             <label for="search">Search:</label>
 
@@ -93,6 +117,8 @@
                 {% endfor %}
             </select>
 
+            <label for="island">Island</label>
+
             <select name="island" id="island">
                 <option value="">All</option>
 
@@ -106,6 +132,8 @@
 
             <button type="submit">Filter</button>
         </form>
+        </div>
+
     {% if penguins %}
         <table>
             <thead>
@@ -144,16 +172,16 @@
                 {% endfor %}
             </tbody>
         </table>
-        <div>
+        <div class="pagination" id="pagination">
             {% if penguins.has_previous %}
-                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}">Previous</a>
+                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.previous_page_number}}#pagination">Previous</a>
             {% endif %}
 
             <span>
                 Page {{ penguins.number }} of {{ penguins.paginator.num_pages }}
             </span>
             {% if penguins.has_next %}
-                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}">Next</a>
+                <a href="?search={{ search }}&species={{ selected_species }}&island={{ selected_island }}&page={{ penguins.next_page_number }}#pagination">Next</a>
             {% endif %}
         </div>
     {% else %}

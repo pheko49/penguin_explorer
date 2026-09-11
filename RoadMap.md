@@ -10,11 +10,11 @@
                        ↓
              Data summary/dashboard ✅
                        ↓
-            Visualizations ***(IN PROGRESS) 🔵
+            Visualizations ✅
                        ↓
             Penguins gallery/facts - (optional)
                        ↓
-                  UI polish
+                  UI polish (** NOT STARTED)
                        ↓
              Production checklist
                        ↓
