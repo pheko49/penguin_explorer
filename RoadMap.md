@@ -14,9 +14,9 @@
                        ↓
             Penguins gallery/facts - (optional)
                        ↓
-                  UI polish (** NOT STARTED)
+                  UI polish ✅
                        ↓
-             Production checklist
+             Production checklist ✅
                        ↓
                     Deploy
                        ↓
