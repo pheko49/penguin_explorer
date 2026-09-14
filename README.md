@@ -104,3 +104,21 @@ Views
 Templates / Visualizations
 
 ```
+
+## Visualizations
+
+The application uses JavaScript and Chart.js to provide interactive visualizations of the penguin data.
+
+### Penguin Population by Species
+
+A bar chart showing the number of penguins belonging to each species.
+
+### Bill Length vs. Body Mass
+
+A scatter plot showing the relationship between penguin bill length and body mass, with the data separated by species.
+
+### Body Mass Distribution
+
+A bar chart showing the distribution of penguin body mass using 500-gram intervals.
+
+These visualizations are generated from data retrieved through Django and passed to the frontend for rendering with Chart.js.
