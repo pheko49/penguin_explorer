@@ -243,3 +243,37 @@ We use placeholders:
 your-secret-key
 your-database-url
 ```
+
+## Deployment
+
+The application is deployed using Docker and Render, with Neon PostgreSQL used as the production database.
+
+### Production Architecture
+
+```text
+GitHub
+   ↓
+Render
+   ↓
+Docker
+   ↓
+Gunicorn
+   ↓
+Django
+   ↓
+Neon PostgreSQL
+```
+
+### Production Configuration
+
+The production environment uses environment variables to manage configuration and sensitive values, including:
+
+- `DATABASE_URL` — PostgreSQL database connection
+- `SECRET_KEY` — Django secret key
+- `DEBUG=False` — disables Django debug mode in production
+- `ALLOWED_HOSTS` — restricts permitted hostnames
+- `CSRF_TRUSTED_ORIGINS` — configures trusted production origins
+
+Static files are collected during the Docker image build and served using WhiteNoise.
+
+Gunicorn is used as the production WSGI server.
