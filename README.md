@@ -76,3 +76,31 @@ Gunicorn
 Django Application
    ↓
 Neon PostgreSQL
+```
+
+## Data & Database
+
+The application uses PostgreSQL as its relational database.
+
+Penguin data is initially stored in a cleaned CSV file and loaded into the Django database using a custom management command.
+
+The Django model defines the structure and data types of the penguin records. Django's ORM is then used to retrieve, filter, aggregate, and group the data used throughout the application.
+
+### Data Flow
+
+```text
+Cleaned CSV
+    ↓
+Django Management Command
+    ↓
+Django Model
+    ↓
+PostgreSQL
+    ↓
+Django ORM
+    ↓
+Views
+    ↓
+Templates / Visualizations
+
+```
