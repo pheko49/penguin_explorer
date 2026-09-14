@@ -26,3 +26,19 @@ The project was built to strengthen my understanding of building and deploying a
 - Visualize the relationship between bill length and body mass
 - Visualize body mass distribution
 - Import penguin data into the database using a Django management command
+
+## Technologies Used
+
+- **Python** — application programming language
+- **Django** — web framework
+- **PostgreSQL** — relational database
+- **Django ORM** — database queries and data aggregation
+- **HTML** — page structure
+- **CSS** — styling and layout
+- **JavaScript** — frontend data visualization
+- **Chart.js** — interactive charts
+- **Docker** — application containerization
+- **Gunicorn** — production WSGI server
+- **WhiteNoise** — static file serving
+- **Neon** — hosted PostgreSQL database
+- **Render** — application deployment and hosting
