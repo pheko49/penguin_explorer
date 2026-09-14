@@ -192,12 +192,11 @@ cd penguin_explorer
 python -m venv .venv
 
 Activate the virtual environment:
-macOS / Linux:
 
+macOS / Linux:
 source .venv/bin/activate
 
 Windows:
-
 .venv\Scripts\activate
 ```
 
