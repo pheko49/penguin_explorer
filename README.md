@@ -122,3 +122,62 @@ A scatter plot showing the relationship between penguin bill length and body mas
 A bar chart showing the distribution of penguin body mass using 500-gram intervals.
 
 These visualizations are generated from data retrieved through Django and passed to the frontend for rendering with Chart.js.
+
+## Project Structure
+
+```text
+penguin_explorer/
+│
+├── config/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── penguins/
+│   ├── management/
+│   │   └── commands/
+│   │       └── import_penguins.py
+│   │
+│   ├── static/
+│   │   └── penguins/
+│   │       ├── index.js
+│   │       └── style.css
+│   │
+│   ├── templates/
+│   │   └── penguins/
+│   │       ├── penguin_list.html
+│   │       └── penguin_detail.html
+│   │
+│   ├── admin.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+│
+├── data/
+│   └── processed/
+│       └── penguins_clean.csv
+│
+├── .dockerignore
+├── .gitignore
+├── Dockerfile
+├── manage.py
+├── README.md
+└── requirements.txt
+```
+
+## Project Structure
+
+[folder/file tree]
+
+### Key Components
+
+- **`models.py`** — Defines the Penguin database model.
+- **`views.py`** — Handles requests, filtering, database queries, calculations, and prepares data for templates.
+- **`urls.py`** — Maps URLs to Django views.
+- **Templates** — Define the structure and presentation of the web pages.
+- **`index.js`** — Handles frontend visualizations using Chart.js.
+- **`style.css`** — Defines the application's styling and layout.
+- **`import_penguins.py`** — Custom Django management command used to load the cleaned CSV data into the database.
+- **`Dockerfile`** — Defines how the application is packaged and run in a Docker container.
+- **`requirements.txt`** — Lists the Python dependencies required by the application.
