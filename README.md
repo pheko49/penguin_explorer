@@ -59,3 +59,20 @@ PostgreSQL Database
 Django Templates
   ↓
 HTML / CSS / JavaScript
+```
+## Deployment Architecture
+
+The application is containerized using Docker and deployed to Render. The production database is hosted on Neon PostgreSQL.
+
+```text
+GitHub
+   ↓
+Render
+   ↓
+Docker Container
+   ↓
+Gunicorn
+   ↓
+Django Application
+   ↓
+Neon PostgreSQL
