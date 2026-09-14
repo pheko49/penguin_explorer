@@ -166,10 +166,6 @@ penguin_explorer/
 └── requirements.txt
 ```
 
-## Project Structure
-
-[folder/file tree]
-
 ### Key Components
 
 - **`models.py`** — Defines the Penguin database model.
@@ -181,3 +177,69 @@ penguin_explorer/
 - **`import_penguins.py`** — Custom Django management command used to load the cleaned CSV data into the database.
 - **`Dockerfile`** — Defines how the application is packaged and run in a Docker container.
 - **`requirements.txt`** — Lists the Python dependencies required by the application.
+
+## Local Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/pheko49/penguin_explorer.git
+cd penguin_explorer
+```
+
+### 2. Create a virtual environment
+```bash
+python -m venv .venv
+
+Activate the virtual environment:
+macOS / Linux:
+
+source .venv/bin/activate
+
+Windows:
+
+.venv\Scripts\activate
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+```bash
+SECRET_KEY=your-secret-key
+DEBUG=True
+DATABASE_URL=your-database-url
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
+### 5. Run database migrations
+```bash
+python manage.py migrate
+```
+
+### 6. Import the penguin data
+```bash
+python manage.py import_penguins
+```
+
+### 7. Start the development server
+```bash
+python manage.py runserver
+```
+
+The application will then be available at:
+http://127.0.0.1:8000/penguins/
+
+
+### One important security point
+
+Notice we're **not putting your actual `DATABASE_URL` or `SECRET_KEY` in the README**.
+
+We use placeholders:
+
+```text
+your-secret-key
+your-database-url
+```
