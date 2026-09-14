@@ -13,3 +13,16 @@ Penguin Explorer is a full-stack Django web application built around a dataset o
 The application allows users to explore penguin records through search and filtering, view individual penguin details, and interact with data visualizations showing species populations, body mass, and the relationship between bill length and body mass.
 
 The project was built to strengthen my understanding of building and deploying a real-world web application using Django, PostgreSQL, Docker, and a production web server.
+
+## Features
+
+- Search penguin records by species or island
+- Filter records by species and island
+- Paginate through penguin records
+- View detailed information for individual penguins
+- Calculate summary statistics for filtered records
+- Display species-level population and average body mass statistics
+- Visualize penguin populations using bar charts
+- Visualize the relationship between bill length and body mass
+- Visualize body mass distribution
+- Import penguin data into the database using a Django management command
