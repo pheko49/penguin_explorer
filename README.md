@@ -42,3 +42,20 @@ The project was built to strengthen my understanding of building and deploying a
 - **WhiteNoise** — static file serving
 - **Neon** — hosted PostgreSQL database
 - **Render** — application deployment and hosting
+
+## Application Architecture
+
+The application follows a simple Django web application architecture:
+
+```text
+User
+  ↓
+Django Views
+  ↓
+Django ORM
+  ↓
+PostgreSQL Database
+  ↓
+Django Templates
+  ↓
+HTML / CSS / JavaScript
